@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Conta</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_shared_purchase">Compra compartilhada</string>
+    <string name="new_direct_purchase">Compra direta</string>
+    <string name="purchase_value">Valor</string>
+    <string name="purchase_description">Descrição</string>
+    <string name="submit_purchase">Cadastrar</string>
+    <string name="purchase_date">Data da compra</string>
+    <string name="shared_purchase_ws_url">localhost:8080/conta/SharedPurchase</string>
+    <string name="house_ws_url">localhost:8080/conta/House</string>
+    <string name="user_file_name">user.ser</string>
+    <string name="shared_purchase_mandatory_fields_toast"></string>
+</resources>
