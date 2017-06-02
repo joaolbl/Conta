@@ -8,7 +8,7 @@
     <string name="submit_purchase">Cadastrar</string>
     <string name="purchase_date">Data da compra</string>
     <string name="shared_purchase_ws_url">localhost:8080/conta/SharedPurchase</string>
-    <string name="house_ws_url">localhost:8080/conta/House</string>
+    <string name="house_ws_url">https://api.myjson.com/bins/121lfl</string>
     <string name="user_file_name">user.ser</string>
     <string name="shared_purchase_mandatory_fields_toast"></string>
 </resources>

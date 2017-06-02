@@ -9,12 +9,13 @@
         android:layout_height="60dp"
         android:hint="@string/purchase_value"
         android:textAlignment="center"
-        android:digits="True"/>
+        android:inputType="numberDecimal"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/user_list"/>
+        android:id="@+id/user_list"
+        android:textAlignment="center"/>
 
     <EditText
         android:layout_width="match_parent"

@@ -28,7 +28,7 @@ public class NewDirectPurchase extends AppCompatActivity {
         List<Person> inhabitants = null;
         House house = getHouse();
         try{
-            inhabitants = new HouseService().getInhabitants(house);
+            inhabitants = new HouseService(this).getInhabitants(house);
         } catch (Exception e) {
             throw new RuntimeException("There has been a problem while retrieving the inhabitants list", e);
         }

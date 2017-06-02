@@ -1,5 +1,6 @@
 package com.conta.saci.conta.ws;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.JsonReader;
@@ -9,6 +10,8 @@ import com.conta.saci.conta.entity.Gender;
 import com.conta.saci.conta.entity.House;
 import com.conta.saci.conta.entity.Person;
 
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -24,27 +27,43 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HouseService {
 
+    private Context context;
+
+    public HouseService(Context ctx){
+        context = ctx;
+    }
+
     public List<Person> getInhabitants(House house) throws Exception {
-        AsyncTask<String, Void, List<Person>> lala = new InhabiantsList().execute(house.getId().toString());
-        return lala.get();
+        AsyncTask<String, Void, List<Person>> inhabitants = new InhabiantsList().execute(house.getId().toString());
+        return inhabitants.get();
     }
 
     class InhabiantsList extends AsyncTask<String, Void, List<Person>>{
 
         @Override
         protected List<Person> doInBackground(String... params) {
-            String houseUrl = Resources.getSystem().getString(R.string.house_ws_url);
+            String houseUrl = context.getString(R.string.house_ws_url);
             try {
                 URL houseWsUrl = new URL(houseUrl);
                 HttpsURLConnection connection = (HttpsURLConnection) houseWsUrl.openConnection();
+                connection.setRequestProperty("houseId", params[0]);
+                connection.setRequestMethod("POST");
                 connection.setDoOutput(true);
                 String wsParam = "?houseId=" + params[0];
-                connection.getOutputStream().write(wsParam.getBytes());
+                DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
+                dos.writeBytes(wsParam);
+                dos.flush();
+                dos.close();
+
+                int responseCode = connection.getResponseCode();
+                System.out.println("URL: " + connection.getURL());
+                System.out.println("Response code: " + responseCode);
 
                 if (connection.getResponseCode() == 200) {
                     InputStreamReader isr = new InputStreamReader(connection.getInputStream(), "UTF-8");
                     JsonReader jreader = new JsonReader(isr);
                     List<Person> inhabitants = readInhabitantsList(jreader);
+                    return inhabitants;
                 }
             } catch (Exception e) {
                 throw new RuntimeException("There has been an error while calling the webservice", e);
