@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/direct_purchase_purchase_value"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="@string/purchase_value"
@@ -18,6 +19,7 @@
         android:textAlignment="center"/>
 
     <EditText
+        android:id="@+id/direct_purchase_date"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="@string/purchase_date"
@@ -25,12 +27,14 @@
         android:digits="True"/>
 
     <EditText
+        android:id="@+id/purchased_item"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="@string/purchase_description"
+        android:hint="@string/direct_purchase_item"
         android:textAlignment="center"/>
 
     <Button
+        android:id="@+id/direct_purchase_submit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/submit_purchase"

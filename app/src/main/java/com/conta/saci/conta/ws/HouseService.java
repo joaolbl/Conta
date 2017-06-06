@@ -1,7 +1,6 @@
 package com.conta.saci.conta.ws;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
@@ -10,14 +9,12 @@ import com.conta.saci.conta.entity.Gender;
 import com.conta.saci.conta.entity.House;
 import com.conta.saci.conta.entity.Person;
 
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -29,7 +26,7 @@ public class HouseService {
 
     private Context context;
 
-    public HouseService(Context ctx){
+    public HouseService(Context ctx) {
         context = ctx;
     }
 
@@ -38,18 +35,18 @@ public class HouseService {
         return inhabitants.get();
     }
 
-    class InhabiantsList extends AsyncTask<String, Void, List<Person>>{
+    private class InhabiantsList extends AsyncTask<String, Void, List<Person>> {
 
         @Override
         protected List<Person> doInBackground(String... params) {
-            String houseUrl = context.getString(R.string.house_ws_url);
+            String houseUrl = context.getString(R.string.house_ws_url_inhabitants_list);
             try {
                 URL houseWsUrl = new URL(houseUrl);
                 HttpsURLConnection connection = (HttpsURLConnection) houseWsUrl.openConnection();
                 connection.setRequestProperty("houseId", params[0]);
                 connection.setRequestMethod("POST");
                 connection.setDoOutput(true);
-                String wsParam = "?houseId=" + params[0];
+                String wsParam = "houseId=" + params[0];
                 DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
                 dos.writeBytes(wsParam);
                 dos.flush();
@@ -111,4 +108,5 @@ public class HouseService {
             return p;
         }
     }
+
 }

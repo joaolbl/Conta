@@ -5,10 +5,16 @@
     <string name="new_direct_purchase">Compra direta</string>
     <string name="purchase_value">Valor</string>
     <string name="purchase_description">Descrição</string>
+    <string name="direct_purchase_item">Item Comprado</string>
     <string name="submit_purchase">Cadastrar</string>
     <string name="purchase_date">Data da compra</string>
-    <string name="shared_purchase_ws_url">localhost:8080/conta/SharedPurchase</string>
-    <string name="house_ws_url">https://api.myjson.com/bins/121lfl</string>
     <string name="user_file_name">user.ser</string>
+    <string name="house_file_name">house.ser</string>
     <string name="shared_purchase_mandatory_fields_toast"></string>
+    <string name="invalid_date_format">Formato de data invalido. Por favor, insira a data no formato dd/mm/yyyy</string>
+
+    <!-- Web services url -->
+    <string name="shared_purchase_ws_url">localhost:8080/conta/SharedPurchase</string>
+    <string name="house_ws_url_inhabitants_list">https://api.myjson.com/bins/121lfl</string>
+    <string name="direct_purchase_ws_url_add">base_url:base_port/directPurchase/add</string>
 </resources>
